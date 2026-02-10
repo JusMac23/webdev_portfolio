@@ -38,12 +38,14 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Hi, I'm <span class="highlight">Justine</span></h1>
-                    <h2 class="role">&lt;Web Developer/&gt;</h2>
+                    <h2 class="role">&lt;System Developer/&gt;</h2>
                     <p class="hero-subtitle">
                         I create responsive, dynamic, and visually engaging web applications that bring ideas to life.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#" class="btn" onclick="downloadResume()"><span class="material-symbols-outlined">download</span> Download Resume</a>
+                        <a href="#" class="btn" onclick="downloadResume()">
+                            <span class="material-symbols-outlined">download</span> Download Resume
+                        </a>
                     </div>
                 </div>
 
@@ -60,13 +62,15 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Hello! I'm Justine, an aspiring Web Developer with a strong enthusiasm for learning and exploring emerging technologies. I am dedicated to building responsive websites and dynamic web applications, combining intuitive design with growing technical expertise and a commitment to continuous improvement.</p>
+                    <p>Hello! I'm Justine, an aspiring System Developer with a strong enthusiasm for learning and exploring emerging technologies. I am dedicated to building responsive websites and dynamic web applications, combining intuitive design with growing technical expertise and a commitment to continuous improvement.</p>
                     <h3>Tech Stack</h3>
                     <div class="skills">
                         <span class="skill"><i class="devicon-php-plain colored"></i> PHP</span>
                         <span class="skill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
                         <span class="skill"><i class="devicon-codeigniter-plain colored"></i> CodeIgniter</span>
                         <span class="skill"><i class="devicon-laravel-plain colored"></i> Laravel</span>
+                        <span class="skill"><i class="devicon-vuejs-plain colored"></i> Vue</span>
+                        <span class="skill"><i class="devicon-react-plain colored"></i> React</span>
                         <span class="skill"><i class="devicon-tailwindcss-plain colored"></i> Tailwind CSS</span>
                         <span class="skill"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
                         <span class="skill"><i class="devicon-html5-plain colored"></i> HTML5</span>
@@ -85,18 +89,19 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
+
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
                         <video class="responsive-video" autoplay muted loop>
-                            <source src="assets/project_clips/project_clips.mp4" type="video/mp4">
+                            <source src="assets/project_clips/ITTicketingSystem.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
                         <h3>CDA IT-Helpdesk System</h3>
-                        <p>A fully functional ticketing system used to submit client tickets regarding IT issues across all CDA offices nationwide.</p>
-                        <p>It is designed to manage tickets efficiently and in real time, with features such as system and email notifications for ticket creation and management.</p>
+                        <p>An advanced ticketing platform that streamlines IT support requests across all CDA offices nationwide.</p>
+                        <p>Empowers administrators to manage tickets efficiently, track progress in real time, and enhance client satisfaction.</p>
                         <div class="project-tags">
                             <span class="project-tag">MySQL</span>
                             <span class="project-tag">PHP</span>
@@ -105,7 +110,55 @@
                             <span class="project-tag">OAuth</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn" id="openModal">View Fullscreen</a>
+                            <a href="#" class="open-modal fullscreen-btn" data-modal="1">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <video class="responsive-video" autoplay muted loop>
+                            <source src="assets/project_clips/DatabreachReportingSystem.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>CDA Databreach Reporting System</h3>
+                        <p>A secure reporting system designed to handle data breach incidents efficiently across all CDA offices nationwide.</p>
+                        <p>Facilitates real-time tracking and resolution of incidentreports while maintaining data security and compliance standards.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">Laravel</span>
+                            <span class="project-tag">SMTP</span>
+                            <span class="project-tag">OAuth</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="open-modal fullscreen-btn" data-modal="2">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <video class="responsive-video" autoplay muted loop>
+                            <source src="assets/project_clips/ECommerceApp.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>A fully-featured e-commerce solution built with modern web technologies for seamless online shopping.</p>
+                        <p>Includes product catalogs, shopping cart management and secure user authentication.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">Laravel</span>
+                            <span class="project-tag">SMTP</span>
+                            <span class="project-tag">OAuth</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="open-modal fullscreen-btn" data-modal="3">View Fullscreen</a>
                         </div>
                     </div>
                 </div>
@@ -113,13 +166,32 @@
         </div>
     </section>
 
-    <!-- Modal -->
-    <div id="videoModal" class="modal">
+    <!-- Modal 1 -->
+    <div class="video-modal">
         <div class="modal-content">
-            <span class="close" aria-label="Close video modal">&times;</span>
-            <video id="demoVideo" controls autoplay>
-                <source src="assets/project_clips/project_clips.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+            <span class="close">&times;</span>
+            <video controls>
+                <source src="assets/project_clips/ITTicketingSystem.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="video-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <video controls>
+                <source src="assets/project_clips/DatabreachReportingSystem.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="video-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <video controls>
+                <source src="assets/project_clips/ECommerceApp.mp4" type="video/mp4">
             </video>
         </div>
     </div>

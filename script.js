@@ -33,64 +33,54 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ===============================
-    // Modal for Video
-    // ===============================
-    const modal = document.getElementById("videoModal");
-    const openBtn = document.getElementById("openModal");
-    const closeBtn = document.querySelector(".close");
-    const demoVideo = document.getElementById("demoVideo");
+    const modals = document.querySelectorAll(".video-modal");
+    const openButtons = document.querySelectorAll(".open-modal");
 
-    // ✅ Function to open modal
-    function openModal() {
-        if (modal) {
-            modal.style.display = "flex";
-        }
-        if (demoVideo) {
-            demoVideo.play();
-        }
-    }
-
-    // ✅ Function to close modal
-    function closeModal() {
-        if (modal) {
-            modal.style.display = "none";
-        }
-        if (demoVideo) {
-            demoVideo.pause();
-        }
-    }
-
-    // ✅ Open modal when clicking the open button
-    if (openBtn) {
-        openBtn.addEventListener("click", function (e) {
+    // Open modal
+    openButtons.forEach(btn => {
+        btn.addEventListener("click", e => {
             e.preventDefault();
-            openModal();
-        });
-    }
+            const index = btn.dataset.modal;
+            const modal = modals[index];
+            const video = modal.querySelector("video");
 
-    // ✅ Close modal when clicking the close button
-    if (closeBtn) {
-        closeBtn.addEventListener("click", function () {
-            closeModal();
+            modal.style.display = "flex";
+            video.currentTime = 0;
+            video.play();
         });
-    }
+    });
 
-    // ✅ Close modal when clicking outside modal content
-    if (modal) {
-        window.addEventListener("click", function (e) {
+    // Close modal
+    modals.forEach(modal => {
+        const closeBtn = modal.querySelector(".close");
+        const video = modal.querySelector("video");
+
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+            video.pause();
+        });
+
+        // Click outside modal
+        modal.addEventListener("click", e => {
             if (e.target === modal) {
-                closeModal();
+                modal.style.display = "none";
+                video.pause();
             }
         });
-    }
+    });
 
-    // ✅ Close modal when pressing the Escape key
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && modal.style.display === "flex") {
-            closeModal();
+    // Escape key closes any open modal
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+            modals.forEach(modal => {
+                if (modal.style.display === "flex") {
+                    modal.style.display = "none";
+                    modal.querySelector("video").pause();
+                }
+            });
         }
     });
+
 });
 
 function downloadResume() {
