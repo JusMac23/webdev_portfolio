@@ -1,93 +1,110 @@
-// ===============================
-// Mobile Navigation Toggle
-// ===============================
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-link');
 
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active')
-                ? '<i class="fas fa-times"></i>'
-                : '<i class="fas fa-bars"></i>';
-        });
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.innerHTML = navLinks.classList.contains('active') 
+            ? '<i class="fas fa-times"></i>' 
+            : '<i class="fas fa-bars"></i>';
+    });
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-    }
-
-    // ===============================
-    // Contact Form (demo)
-    // ===============================
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-        });
-    }
-
-    const modals = document.querySelectorAll(".video-modal");
-    const openButtons = document.querySelectorAll(".open-modal");
-
-    // Open modal
-    openButtons.forEach(btn => {
-        btn.addEventListener("click", e => {
-            e.preventDefault();
-            const index = btn.dataset.modal;
-            const modal = modals[index];
-            const video = modal.querySelector("video");
-
-            modal.style.display = "flex";
-            video.currentTime = 0;
-            video.play();
+    // Close menu when clicking a link
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
         });
     });
 
-    // Close modal
-    modals.forEach(modal => {
-        const closeBtn = modal.querySelector(".close");
-        const video = modal.querySelector("video");
+    // 2. Scroll Reveal Animation
+    const observerOptions = {
+        threshold: 0.15
+    };
 
-        closeBtn.addEventListener("click", () => {
-            modal.style.display = "none";
-            video.pause();
-        });
-
-        // Click outside modal
-        modal.addEventListener("click", e => {
-            if (e.target === modal) {
-                modal.style.display = "none";
-                video.pause();
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show-element');
             }
         });
+    }, observerOptions);
+
+    document.querySelectorAll('.hidden-element').forEach(el => observer.observe(el));
+
+    // 3. Dynamic Modal Logic
+    const modal = document.getElementById('projectModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalStack = document.getElementById('modalStack');
+    const closeBtn = document.querySelector('.close-modal');
+    const openBtns = document.querySelectorAll('.open-modal');
+
+    // Open Modal and Fill Data
+    openBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const videoSrc = btn.getAttribute('data-video');
+            const title = btn.getAttribute('data-title');
+            const desc = btn.getAttribute('data-desc');
+            const stack = btn.getAttribute('data-stack');
+
+            modalVideo.src = videoSrc;
+            modalTitle.textContent = title;
+            modalDesc.textContent = desc;
+            modalStack.textContent = stack;
+
+            modal.classList.add('active');
+            modalVideo.play();
+        });
     });
 
-    // Escape key closes any open modal
-    document.addEventListener("keydown", e => {
-        if (e.key === "Escape") {
-            modals.forEach(modal => {
-                if (modal.style.display === "flex") {
-                    modal.style.display = "none";
-                    modal.querySelector("video").pause();
-                }
-            });
+    // Close Function
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalVideo.pause();
+        modalVideo.src = ""; // Reset source
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // Close when clicking outside content
+    window.addEventListener('click', (e) => {
+        if (e.target == modal) {
+            closeModal();
         }
     });
 
+    // 4. Header Active State on Scroll
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        links.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
 });
 
+// Resume Download Placeholder
 function downloadResume() {
-  const link = document.createElement('a');
-  link.href = 'assets/Justine Macarayan_Resume.pdf';
-  link.download = 'Justine Macarayan_Resume.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+    const link = document.createElement("a");
+    link.href = "assets/Justine Macarayan_Resume.pdf";
+    link.download = "Justine Macarayan_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }

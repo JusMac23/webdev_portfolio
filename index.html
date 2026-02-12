@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Justine Macarayan | Web Developer</title>
+    <title>Justine Macarayan | System Developer</title>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
+
+    <header id="header">
         <div class="container">
             <nav>
-                <a href="#" class="logo">
-                    <img src="assets/JM_Coding.png" alt="JM Coding Logo" class="logo-icon">
-                    <span>Justine.dev</span>
+                <a href="#home" class="logo">
+                    <img src="assets/JM_Coding.png" alt="JM Logo" class="logo-icon">
+                    <span>Justine<span class="dot">.dev</span></span>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="#home"><i class="fas fa-house"></i> Home</a></li>
-                    <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-                    <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
-                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -32,234 +34,284 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Hi, I'm <span class="highlight">Justine</span></h1>
-                    <h2 class="role">&lt;System Developer/&gt;</h2>
-                    <p class="hero-subtitle">
-                        I create responsive, dynamic, and visually engaging web applications that bring ideas to life.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="btn" onclick="downloadResume()">
-                            <span class="material-symbols-outlined">download</span> Download Resume
-                        </a>
-                    </div>
+        <div class="container hero-container">
+            <div class="hero-text hidden-element">
+                <div class="badge">Available for hire</div>
+                <h1>Building Digital <br> <span class="text-gradient">Experiences</span></h1>
+                <h2 class="role">I am a &lt;<span class="typing-text">System Developer</span>/&gt;</h2>
+                <p class="hero-subtitle">
+                    Specializing in building responsive, dynamic, and secure web applications using modern PHP frameworks and scalable database architectures.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        View Projects <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#" class="btn btn-secondary" onclick="downloadResume()">
+                        <span class="material-symbols-outlined">download</span> Resume
+                    </a>
                 </div>
+            </div>
 
-                <div class="hero-image">
+            <div class="hero-image hidden-element">
+                <div class="image-wrapper">
                     <img src="assets/ID_Picture.jpg" alt="Justine Macarayan">
+                    <div class="floating-icon icon-php"><i class="devicon-php-plain"></i></div>
+                    <div class="floating-icon icon-laravel"><i class="devicon-laravel-plain"></i></div>
+                    <div class="floating-icon icon-react"><i class="devicon-react-original"></i></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Hello! I'm Justine, an aspiring System Developer with a strong enthusiasm for learning and exploring emerging technologies. I am dedicated to building responsive websites and dynamic web applications, combining intuitive design with growing technical expertise and a commitment to continuous improvement.</p>
-                    <h3>Tech Stack</h3>
-                    <div class="skills">
-                        <span class="skill"><i class="devicon-php-plain colored"></i> PHP</span>
-                        <span class="skill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
-                        <span class="skill"><i class="devicon-codeigniter-plain colored"></i> CodeIgniter</span>
-                        <span class="skill"><i class="devicon-laravel-plain colored"></i> Laravel</span>
-                        <span class="skill"><i class="devicon-vuejs-plain colored"></i> Vue</span>
-                        <span class="skill"><i class="devicon-react-plain colored"></i> React</span>
-                        <span class="skill"><i class="devicon-tailwindcss-plain colored"></i> Tailwind CSS</span>
-                        <span class="skill"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
-                        <span class="skill"><i class="devicon-html5-plain colored"></i> HTML5</span>
-                        <span class="skill"><i class="devicon-css3-plain colored"></i> CSS3</span>
-                        <span class="skill"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-                        <span class="skill"><i class="devicon-git-plain colored"></i> Git</span>
-                        <span class="skill"><i class="devicon-github-plain colored"></i> GitHub</span>
-                        <span class="skill"><i class="devicon-wordpress-plain colored"></i> WordPress</span>
+            <div class="section-header hidden-element">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-desc">Passionate about clean code and efficient systems.</p>
+            </div>
+            
+            <div class="about-content hidden-element">
+                <div class="about-text-card">
+                    <p>Hello! I'm Justine, an aspiring System Developer with a strong enthusiasm for learning and exploring emerging technologies. I focus on building robust back-end systems using <strong>Laravel</strong> and <strong>PHP</strong>, while maintaining seamless front-end experiences with <strong>Vue</strong> and <strong>React</strong>.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>3+</h3>
+                            <p>Major Projects</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>10+</h3>
+                            <p>Technologies</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-stack">
+                    <h3>My Arsenal</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Backend</h4>
+                            <div class="skill-icons">
+                                <span class="skill" title="PHP"><i class="devicon-php-plain colored"></i></span>
+                                <span class="skill" title="Laravel"><i class="devicon-laravel-plain colored"></i></span>
+                                <span class="skill" title="CodeIgniter"><i class="devicon-codeigniter-plain colored"></i></span>
+                                <span class="skill" title="MySQL"><i class="devicon-mysql-plain colored"></i></span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Frontend</h4>
+                            <div class="skill-icons">
+                                <span class="skill" title="Vue.js"><i class="devicon-vuejs-plain colored"></i></span>
+                                <span class="skill" title="React"><i class="devicon-react-original colored"></i></span>
+                                <span class="skill" title="Tailwind"><i class="devicon-tailwindcss-original colored"></i></span>
+                                <span class="skill" title="Bootstrap"><i class="devicon-bootstrap-plain colored"></i></span>
+                                <span class="skill" title="JS"><i class="devicon-javascript-plain colored"></i></span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Tools</h4>
+                            <div class="skill-icons">
+                                <span class="skill" title="Git"><i class="devicon-git-plain colored"></i></span>
+                                <span class="skill" title="GitHub"><i class="devicon-github-original colored"></i></span>
+                                <span class="skill" title="WordPress"><i class="devicon-wordpress-plain colored"></i></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">My Projects</h2>
+            <div class="section-header hidden-element">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-desc">Real-world solutions for complex problems.</p>
+            </div>
 
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <video class="responsive-video" autoplay muted loop>
+                
+                <div class="project-card hidden-element">
+                    <div class="card-video-container">
+                        <video loop muted class="preview-video">
                             <source src="assets/project_clips/ITTicketingSystem.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
                         </video>
+                        <div class="video-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>CDA IT-Helpdesk System</h3>
-                        <p>An advanced ticketing platform that streamlines IT support requests across all CDA offices nationwide.</p>
-                        <p>Empowers administrators to manage tickets efficiently, track progress in real time, and enhance client satisfaction.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">MySQL</span>
-                            <span class="project-tag">PHP</span>
-                            <span class="project-tag">Laravel</span>
-                            <span class="project-tag">SMTP</span>
-                            <span class="project-tag">OAuth</span>
+                    <div class="card-content">
+                        <h3>CDA IT-Helpdesk</h3>
+                        <p class="short-desc">A centralized ticketing platform for nationwide IT support requests.</p>
+                        <div class="tags">
+                            <span>Laravel</span>
+                            <span>MySQL</span>
+                            <span>OAuth</span>
+                            <span>SMTP</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="open-modal fullscreen-btn" data-modal="0">View Fullscreen</a>
-                        </div>
+                        <button class="btn-link open-modal" 
+                            data-video="assets/project_clips/ITTicketingSystem.mp4"
+                            data-title="CDA IT-Helpdesk System"
+                            data-desc="An advanced ticketing platform that streamlines IT support requests across all CDA offices nationwide. Empowers administrators to manage tickets efficiently, track progress in real time, and enhance client satisfaction."
+                            data-stack="Laravel, MySQL, PHP, SMTP, OAuth">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <video class="responsive-video" autoplay muted loop>
+                <div class="project-card hidden-element">
+                    <div class="card-video-container">
+                        <video loop muted class="preview-video">
                             <source src="assets/project_clips/DatabreachReportingSystem.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
                         </video>
+                        <div class="video-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>CDA Databreach Reporting System</h3>
-                        <p>A secure reporting system designed to handle data breach incidents efficiently across all CDA offices nationwide.</p>
-                        <p>Facilitates real-time tracking and resolution of incidentreports while maintaining data security and compliance standards.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">MySQL</span>
-                            <span class="project-tag">PHP</span>
-                            <span class="project-tag">Laravel</span>
-                            <span class="project-tag">SMTP</span>
-                            <span class="project-tag">OAuth</span>
+                    <div class="card-content">
+                        <h3>Data Breach Reporting</h3>
+                        <p class="short-desc">Secure incident reporting system for compliance and resolution.</p>
+                        <div class="tags">
+                            <span>Laravel</span>
+                            <span>MySQL</span>
+                            <span>OAuth</span>
+                            <span>SMTP</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="open-modal fullscreen-btn" data-modal="1">View Fullscreen</a>
-                        </div>
+                        <button class="btn-link open-modal" 
+                            data-video="assets/project_clips/DatabreachReportingSystem.mp4"
+                            data-title="CDA Databreach Reporting System"
+                            data-desc="A secure reporting system designed to handle data breach incidents efficiently. Facilitates real-time tracking and resolution of incident reports while maintaining strict data security and compliance standards."
+                            data-stack="Laravel, MySQL, PHP, SMTP, OAuth">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <video class="responsive-video" autoplay muted loop>
+                <div class="project-card hidden-element">
+                    <div class="card-video-container">
+                        <video loop muted class="preview-video">
                             <source src="assets/project_clips/ECommerceApp.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
                         </video>
+                        <div class="video-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
                     </div>
-                    <div class="project-info">
+                    <div class="card-content">
                         <h3>E-Commerce Platform</h3>
-                        <p>A fully-featured e-commerce solution built with modern web technologies for seamless online shopping.</p>
-                        <p>Includes product catalogs, shopping cart management and secure user authentication.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">MySQL</span>
-                            <span class="project-tag">PHP</span>
-                            <span class="project-tag">SMTP</span>
+                        <p class="short-desc">Full-stack shopping solution with cart and inventory management.</p>
+                        <div class="tags">
+                            <span>MySQL</span>
+                            <span>PHP</span>
+                            <span>SMTP</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="open-modal fullscreen-btn" data-modal="2">View Fullscreen</a>
-                        </div>
+                        <button class="btn-link open-modal" 
+                            data-video="assets/project_clips/ECommerceApp.mp4"
+                            data-title="E-Commerce Platform"
+                            data-desc="A fully-featured e-commerce solution built with modern web technologies. Features include dynamic product catalogs, secure shopping cart state management, and user authentication."
+                            data-stack="MySQL, PHP, HTML5, CSS3">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Modal 1 -->
-    <div class="video-modal">
+    <div id="projectModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <video controls>
-                <source src="assets/project_clips/ITTicketingSystem.mp4" type="video/mp4">
-            </video>
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-video-wrapper">
+                    <video id="modalVideo" controls>
+                        <source src="" type="video/mp4">
+                    </video>
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalTitle">Project Title</h2>
+                    <div class="modal-tags" id="modalStack"></div>
+                    <p id="modalDesc">Description goes here...</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Modal 2 -->
-    <div class="video-modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <video controls>
-                <source src="assets/project_clips/DatabreachReportingSystem.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-
-    <!-- Modal 3 -->
-    <div class="video-modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <video controls>
-                <source src="assets/project_clips/ECommerceApp.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>jmacarayan17@gmail.com</p>
+            <div class="section-header hidden-element">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-desc">Have a project in mind? Let's build it.</p>
+            </div>
+            
+            <div class="contact-wrapper hidden-element">
+                <div class="contact-card">
+                    <div class="contact-details">
+                        <div class="c-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <a href="mailto:jmacarayan17@gmail.com">jmacarayan17@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="c-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h5>Phone</h5>
+                                <p>+63 945-8739-896</p>
+                            </div>
+                        </div>
+                        <div class="c-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>Location</h5>
+                                <p>Potrero, Malabon City</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+63 945-8739-896</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Potrero, Malabon City</p>
+                    <div class="social-connect">
+                        <p>Connect with me:</p>
+                        <div class="social-links">
+                            <a href="https://github.com/JusMac23" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/justine-macarayan-4bb77318b/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://facebook.com/justine_macarayan" target="_blank" rel="noopener noreferrer" aria-label="Visit my Facebook Profile">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/justine_macarayan" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile">
+                                <i class="fab fa-instagram"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
+
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" required placeholder=" ">
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required placeholder=" ">
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" required placeholder=" "></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <h3>Justine.dev</h3>
-                <p>Crafting digital experiences with code and creativity.</p>
-                <div class="social-links">
-                    <a href="https://github.com/JusMac23" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/justine-macarayan-4bb77318b/" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://facebook.com/justine_macarayan" aria-label="Facebook Profile"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/justine_macarayan" aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
-                </div>
-                <p class="copyright">&copy; 2025 JM_Coding. All rights reserved.</p>
-            </div>
+            <p>&copy; 2025 Justine.dev. Built with <i class="fas fa-heart fa-heart-pulse"></i> and Code.</p>
         </div>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>
