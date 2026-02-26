@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Typing Effect for Hero Section
     const typingSpan = document.querySelector('.typing-text');
-    const textArray = ['System Developer', 'Backend Engineer', 'Tech Enthusiast'];
+    const textArray = ['System Developer', 'Tech Enthusiast'];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
