@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDeleting = false;
 
     function type() {
+        if(!typingSpan) return;
+        
         const currentText = textArray[textIndex];
         
         if (isDeleting) {
@@ -61,20 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Scroll Reveal Animation
     const observerOptions = {
-        threshold: 0.15
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px" // Triggers slightly before element enters fully
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('show-element');
+                // Optional: Stop observing once revealed to prevent re-animation
+                // observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     document.querySelectorAll('.hidden-element').forEach(el => observer.observe(el));
 
-    // 4. Dynamic Modal Logic
+    // 4. Dynamic Modal Logic (Optimized for Mobile/Video swapping)
     const modal = document.getElementById('projectModal');
     const modalVideo = document.getElementById('modalVideo');
     const modalTitle = document.getElementById('modalTitle');
@@ -88,18 +93,24 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             const videoSrc = btn.getAttribute('data-video');
-            const title = btn.getAttribute('data-title');
-            const desc = btn.getAttribute('data-desc');
-            const stack = btn.getAttribute('data-stack');
-
+            
+            // Switch out the data
             modalVideo.src = videoSrc;
-            modalTitle.textContent = title;
-            modalDesc.textContent = desc;
-            modalStack.textContent = stack;
+            modalTitle.textContent = btn.getAttribute('data-title');
+            modalDesc.textContent = btn.getAttribute('data-desc');
+            modalStack.textContent = btn.getAttribute('data-stack');
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden'; // Lock background scroll
-            modalVideo.play();
+
+            // Load new source and attempt autoplay (catch errors if browser blocks autoplay)
+            modalVideo.load();
+            let playPromise = modalVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Autoplay prevented by browser. User must click play.", error);
+                });
+            }
         });
     });
 
@@ -108,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('active');
         document.body.style.overflow = 'auto'; // Unlock background scroll
         modalVideo.pause();
-        modalVideo.src = ""; // Reset source
+        modalVideo.src = ""; // Clear source to stop buffering
     };
 
     closeBtn.addEventListener('click', closeModal);
@@ -142,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Resume Download Logic
 function downloadResume(e) {
-    e.preventDefault(); // Prevent page jump
+    e.preventDefault(); 
     const link = document.createElement("a");
     link.href = "assets/Justine Macarayan_Resume.pdf";
     link.download = "Justine Macarayan_Resume.pdf";
