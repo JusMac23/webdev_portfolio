@@ -4,22 +4,62 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const links = document.querySelectorAll('.nav-link');
 
-    hamburger.addEventListener('click', () => {
+    const toggleNav = () => {
         navLinks.classList.toggle('active');
+        // Prevent body scrolling when menu is open
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
         hamburger.innerHTML = navLinks.classList.contains('active') 
             ? '<i class="fas fa-times"></i>' 
             : '<i class="fas fa-bars"></i>';
-    });
+    };
+
+    hamburger.addEventListener('click', toggleNav);
 
     // Close menu when clicking a link
     links.forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            if (navLinks.classList.contains('active')) {
+                toggleNav();
+            }
         });
     });
 
-    // 2. Scroll Reveal Animation
+    // 2. Typing Effect for Hero Section
+    const typingSpan = document.querySelector('.typing-text');
+    const textArray = ['System Developer', 'Backend Engineer', 'Tech Enthusiast'];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentText = textArray[textIndex];
+        
+        if (isDeleting) {
+            typingSpan.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typingSpan.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === currentText.length) {
+            typeSpeed = 2000; // Pause at the end
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % textArray.length;
+            typeSpeed = 500; // Pause before typing next word
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+    
+    // Start typing effect
+    if(typingSpan) setTimeout(type, 1000);
+
+    // 3. Scroll Reveal Animation
     const observerOptions = {
         threshold: 0.15
     };
@@ -34,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.hidden-element').forEach(el => observer.observe(el));
 
-    // 3. Dynamic Modal Logic
+    // 4. Dynamic Modal Logic
     const modal = document.getElementById('projectModal');
     const modalVideo = document.getElementById('modalVideo');
     const modalTitle = document.getElementById('modalTitle');
@@ -58,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalStack.textContent = stack;
 
             modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Lock background scroll
             modalVideo.play();
         });
     });
@@ -65,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close Function
     const closeModal = () => {
         modal.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Unlock background scroll
         modalVideo.pause();
         modalVideo.src = ""; // Reset source
     };
@@ -78,14 +120,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Header Active State on Scroll
+    // 5. Header Active State on Scroll
     const sections = document.querySelectorAll('section');
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 200)) {
+            if (scrollY >= (sectionTop - 250)) {
                 current = section.getAttribute('id');
             }
         });
@@ -99,8 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Resume Download Placeholder
-function downloadResume() {
+// Resume Download Logic
+function downloadResume(e) {
+    e.preventDefault(); // Prevent page jump
     const link = document.createElement("a");
     link.href = "assets/Justine Macarayan_Resume.pdf";
     link.download = "Justine Macarayan_Resume.pdf";
