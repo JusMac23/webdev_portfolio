@@ -155,8 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function downloadResume(e) {
     e.preventDefault(); 
     const link = document.createElement("a");
-    link.href = "assets/Justine Macarayan_Resume.pdf";
-    link.download = "Justine Macarayan_Resume.pdf";
+    link.href = "assets/JMacarayan_Resume.pdf";
+    link.download = "JMacarayan_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
